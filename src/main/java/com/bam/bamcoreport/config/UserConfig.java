@@ -1,6 +1,6 @@
 package com.bam.bamcoreport.config;
 
-import com.bam.bamcoreport.model.Users;
+import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -22,8 +22,8 @@ public class UserConfig {
                     "Doe",
                     "CEO",
                     "head of everything",
-                    1L,
-                    1L,
+                    null,
+                    null,
                     LocalDate.of(1980, 1, 1),
                     LocalDate.of(1980, 1, 1));
 
@@ -34,8 +34,8 @@ public class UserConfig {
                     "Lupa",
                     "CEO",
                     "head of everything",
-                    1L,
-                    1L,
+                    john,
+                    john,
                     LocalDate.of(1980, 1, 1),
                     LocalDate.of(1980, 1, 1));
 

@@ -1,10 +1,9 @@
-package com.bam.bamcoreport.model;
+package com.bam.bamcoreport.entity;
 
-import org.apache.tomcat.jni.Local;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table
@@ -13,16 +12,32 @@ public class Users {
     @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     private Long id;
+
     private String username;
+
+    @JsonIgnore
     private String password;
+
     private String firstName;
+
     private String lastName;
+
     private String title;
+
     private String jobTitle;
-    private Long managerUserId;
-    private Long createdBy;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "managerUserId")
+    private Users managerUserId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "createdBy")
+    private Users createdBy;
+
     private LocalDate createdDate;
+
     private LocalDate lastUpdate;
+
     @Transient
     private Long iconId;
 
@@ -30,7 +45,7 @@ public class Users {
 
     }
 
-    public Users(String username, String password, String firstName, String lastName, String title, String jobTitle, Long managerUserId, Long createdBy, LocalDate createdDate, LocalDate lastUpdate) {
+    public Users(String username, String password, String firstName, String lastName, String title, String jobTitle, Users managerUserId, Users createdBy, LocalDate createdDate, LocalDate lastUpdate) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
@@ -43,7 +58,7 @@ public class Users {
         this.lastUpdate = lastUpdate;
     }
 
-    public Users(Long id, String username, String password, String firstName, String lastName, String title, String jobTitle, Long managerUserId, Long createdBy, LocalDate createdDate, LocalDate lastUpdate) {
+    public Users(Long id, String username, String password, String firstName, String lastName, String title, String jobTitle, Users managerUserId, Users createdBy, LocalDate createdDate, LocalDate lastUpdate) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -113,19 +128,19 @@ public class Users {
         this.jobTitle = jobTitle;
     }
 
-    public Long getManagerUserId() {
+    public Users getManagerUserId() {
         return managerUserId;
     }
 
-    public void setManagerUserId(Long managerUserId) {
+    public void setManagerUserId(Users managerUserId) {
         this.managerUserId = managerUserId;
     }
 
-    public Long getCreatedBy() {
+    public Users getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(Long createdBy) {
+    public void setCreatedBy(Users createdBy) {
         this.createdBy = createdBy;
     }
 

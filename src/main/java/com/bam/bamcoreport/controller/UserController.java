@@ -1,6 +1,6 @@
 package com.bam.bamcoreport.controller;
 
-import com.bam.bamcoreport.model.Users;
+import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
