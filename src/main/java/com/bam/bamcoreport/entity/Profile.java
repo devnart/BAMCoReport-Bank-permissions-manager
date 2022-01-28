@@ -21,13 +21,19 @@ public class Profile {
     @Column(name = "description",columnDefinition = "TEXT")
     private String description;
 
+<<<<<<< HEAD
     @CreationTimestamp
+=======
+>>>>>>> ed9411ca7c89a5521936d3c0d1b37bffd196d315
     private LocalDate creationDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Users createdBy;
 
+<<<<<<< HEAD
     @UpdateTimestamp
+=======
+>>>>>>> ed9411ca7c89a5521936d3c0d1b37bffd196d315
     private LocalDate lastUpdate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,6 +41,7 @@ public class Profile {
 
     public Profile() {
     }
+
 
     public Profile(Long id, boolean isDefault, String name, String description, LocalDate creationDate, Users createdBy, LocalDate lastUpdate, Users lastUpdatedBy) {
         this.id = id;
