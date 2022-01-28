@@ -3,9 +3,7 @@ package com.bam.bamcoreport.controller;
 import com.bam.bamcoreport.entity.Groups;
 import com.bam.bamcoreport.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,7 +19,12 @@ public class GroupController {
     }
 
     @GetMapping
-    public List<Groups> getUsers() {
+    public List<Groups> getGroup() {
         return groupService.getGroup();
+    }
+
+    @PostMapping
+    public void addGroup(@RequestBody Groups group){
+        groupService.newGroup(group);
     }
 }
