@@ -10,19 +10,27 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
     private boolean isDefault;
+
     private String name;
+
     @Column(name = "description",columnDefinition = "TEXT")
     private String description;
+
     private LocalDate creationDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Users createdBy;
+
     private LocalDate lastUpdate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Users lastUpdatedBy;
 
     public Profile() {
     }
+
 
     public Profile(Long id, boolean isDefault, String name, String description, LocalDate creationDate, Users createdBy, LocalDate lastUpdate, Users lastUpdatedBy) {
         this.id = id;

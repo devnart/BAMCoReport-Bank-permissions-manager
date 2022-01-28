@@ -15,7 +15,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
     private String name;
+
     private String displayName;
 
     @Column(name = "description",columnDefinition="TEXT")
@@ -23,8 +25,10 @@ public class Role {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Users createdBy;
+
     @CreationTimestamp
     private LocalDate creationDate;
+
     @UpdateTimestamp
     private LocalDate lastUpdate;
 
