@@ -23,8 +23,10 @@ public class Role {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Users createdBy;
+
     @CreationTimestamp
     private LocalDate creationDate;
+
     @UpdateTimestamp
     private LocalDate lastUpdate;
 

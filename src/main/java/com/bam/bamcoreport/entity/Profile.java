@@ -1,5 +1,8 @@
 package com.bam.bamcoreport.entity;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -10,14 +13,23 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
+
     private boolean isDefault;
+
     private String name;
+
     @Column(name = "description",columnDefinition = "TEXT")
     private String description;
+
+    @CreationTimestamp
     private LocalDate creationDate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Users createdBy;
+
+    @UpdateTimestamp
     private LocalDate lastUpdate;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Users lastUpdatedBy;
 

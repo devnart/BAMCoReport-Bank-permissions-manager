@@ -11,7 +11,7 @@ public class UserContactInfo {
     private long id;
 
     @OneToOne(targetEntity = Users.class,cascade = CascadeType.ALL)
-    @JoinColumn(name = "userid", referencedColumnName = "id")
+    @JoinColumn(name = "userId", referencedColumnName = "id")
     private Users userId;
 
     private String email;
