@@ -12,8 +12,8 @@ import java.util.List;
 @Configuration
 public class UserConfig {
 
-//    @Bean
-   /* CommandLineRunner commandLineRunner(UserRepository repository) {
+   @Bean
+    CommandLineRunner commandLineRunner(UserRepository repository) {
         return args -> {
             Users john = new Users(
                     "johndoe",
@@ -43,5 +43,5 @@ public class UserConfig {
         };
 
 
-    }*/
+    }
 }

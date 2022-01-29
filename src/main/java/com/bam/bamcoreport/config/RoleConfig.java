@@ -12,11 +12,11 @@ import java.util.Calendar;
 @Configuration
 public class RoleConfig {
 
-    @Bean
+   /* @Bean
     CommandLineRunner commandLineRunner(RoleRepository roleRepository){
         return args -> {
             roleRepository.save(new Role("ROLE_ADMIN", "Administrator","Administrator description",null));
 
         };
-    }
+    }*/
 }
