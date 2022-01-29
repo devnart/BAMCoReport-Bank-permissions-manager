@@ -23,7 +23,7 @@ public class Role {
     @Column(name = "description",columnDefinition="TEXT")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Users createdBy;
 
     @CreationTimestamp

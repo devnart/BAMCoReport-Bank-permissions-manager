@@ -10,7 +10,7 @@ public class UserContactInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToOne(targetEntity = Users.class,cascade = CascadeType.ALL)
+    @OneToOne(targetEntity = Users.class,cascade = CascadeType.MERGE)
     @JoinColumn(name = "userId", referencedColumnName = "id")
     private Users userId;
 
