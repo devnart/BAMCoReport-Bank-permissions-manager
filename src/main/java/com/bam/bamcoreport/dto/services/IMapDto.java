@@ -10,4 +10,6 @@ public interface IMapDto <E,D>{
     E convertToEntity(D dto, Class<E> entityClass);
 
     List<D> convertListToListDto(Collection<E> entityList, Class<D> outCLass);
+
+    List<E> convertListToListEntity(Collection<D> DtoList, Class<E> entityCLass);
 }

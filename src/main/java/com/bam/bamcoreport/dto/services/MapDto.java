@@ -45,4 +45,9 @@ public class MapDto<E, D> implements IMapDto<E,D>{
 
         return entityList.stream().map(entity -> convertToDto(entity, outCLass)).collect(Collectors.toList());
     }
+
+    @Override
+    public List<E> convertListToListEntity(Collection<D> DtoList, Class<E> entityCLass) {
+        return null;
+    }
 }
