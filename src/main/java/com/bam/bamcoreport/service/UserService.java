@@ -1,5 +1,8 @@
 package com.bam.bamcoreport.service;
 
+import com.bam.bamcoreport.dto.model.UserDto;
+import com.bam.bamcoreport.dto.services.IMapDto;
+import com.bam.bamcoreport.dto.services.MapDto;
 import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +14,17 @@ import java.util.Optional;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
+    UserRepository userRepository;
 
-    @Autowired
+    IMapDto<Users, UserDto> userMapping;
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
-    public List<Users> getUsers() {
-        return userRepository.findAll();
-
+    public List<UserDto> getUsers() {
+        List<Users> users= userRepository.findAll();
+        return userMapping.convertListToListDto(users,UserDto.class);
     }
 
     public void newUser(Users user) {
