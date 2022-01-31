@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MapDto<E, D> implements IMapDto<E,D>{
 
 

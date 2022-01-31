@@ -14,8 +14,10 @@ import java.util.Optional;
 @Service
 public class UserService {
 
+    @Autowired
     UserRepository userRepository;
 
+    @Autowired
     IMapDto<Users, UserDto> userMapping;
 
     public UserService(UserRepository userRepository) {
