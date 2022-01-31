@@ -33,14 +33,14 @@ public class UserService {
         return userMapping.convertListToListDto(users,UserDto.class);
     }
 
-    public void newUser(Users user) {
+    public Users newUser(Users user) {
         Optional<Users> username = userRepository.findByUsername(user.getUsername());
         if (username.isPresent()) {
             log.error("username taken");
             throw new IllegalStateException("username taken");
         }
+       return userRepository.save(user);
 
-        userRepository.save(user);
     }
 
     public void deleteUser(Long userId) {
