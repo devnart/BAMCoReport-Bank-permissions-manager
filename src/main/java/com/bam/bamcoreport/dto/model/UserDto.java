@@ -2,6 +2,7 @@ package com.bam.bamcoreport.dto.model;
 
 import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.entity.UserContactInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ public class UserDto {
     private UserContactInfo userContactInfo;
     private boolean enabled;
     private String username;
+    @JsonIgnore
     private String password;
     private String firstname;
     private String lastname;

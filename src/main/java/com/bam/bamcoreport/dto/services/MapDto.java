@@ -10,7 +10,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
-
+import org.springframework.stereotype.Service;
+@Service
 public class MapDto<E, D> implements IMapDto<E,D>{
 
 
@@ -42,5 +43,10 @@ public class MapDto<E, D> implements IMapDto<E,D>{
             return Collections.emptyList();
 
         return entityList.stream().map(entity -> convertToDto(entity, outCLass)).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<E> convertListToListEntity(Collection<D> DtoList, Class<E> entityCLass) {
+        return null;
     }
 }
