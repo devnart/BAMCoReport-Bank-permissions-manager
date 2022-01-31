@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 
 public interface IMapDto <E,D>{
+
     D convertToDto(E entity, Class<D> dtoClass);
 
     E convertToEntity(D dto, Class<E> entityClass);

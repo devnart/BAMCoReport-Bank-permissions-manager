@@ -2,9 +2,11 @@ package com.bam.bamcoreport.dto.model;
 
 import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.entity.UserContactInfo;
+import io.swagger.annotations.ApiModel;
 
 import java.time.LocalDateTime;
 
+@ApiModel("User")
 public class UserDto {
     private UserContactInfo userContactInfo;
     private boolean enabled;

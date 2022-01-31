@@ -1,5 +1,6 @@
 package com.bam.bamcoreport.controller;
 
+import com.bam.bamcoreport.dto.model.UserDto;
 import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class UserController {
     }
 
     @GetMapping
-    public List<Users> getUsers() {
+    public List<UserDto> getUsers() {
         return userService.getUsers();
     }
 
