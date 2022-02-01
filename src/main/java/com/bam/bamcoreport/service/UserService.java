@@ -8,6 +8,9 @@ import com.bam.bamcoreport.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+/*import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;*/
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,9 +27,23 @@ public class UserService {
     @Autowired
     IMapDto<Users, UserDto> userMapping;
 
+
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+  /*  @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<Users> user=userRepository.findByUsername(username);
+        if (user == null){
+            log.error("User not found");
+            throw new UsernameNotFoundException("User not found");
+        }
+        else{
+            log.info("user found {}",username);
+        }
+        return new org.springframework.security.core.userdetails.User(user.get().getUsername(),user.get().getPassword(),authorities);
+    }*/
 
     public List<UserDto> getUsers() {
         List<Users> users= userRepository.findAll();
@@ -55,4 +72,6 @@ public class UserService {
         userRepository.deleteById(userId);
 
     }
+
+
 }
