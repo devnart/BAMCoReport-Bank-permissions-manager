@@ -40,4 +40,5 @@ public class UserController {
         log.warn("user deleted");
         userService.deleteUser(userId);
     }
+
 }
