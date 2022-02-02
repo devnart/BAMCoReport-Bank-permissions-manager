@@ -1,9 +1,10 @@
 package com.bam.bamcoreport.repository;
 
-import com.bam.bamcoreport.entity.ProfileMember;
+import com.bam.bamcoreport.entity.UserMembership;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProfileMemberRepository extends JpaRepository<ProfileMember,Long> {
+public interface UserMembershipRepository extends JpaRepository<UserMembership,Long> {
+
 }
