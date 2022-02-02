@@ -19,7 +19,7 @@ import java.util.List;
 @Api(tags = "Utilisateur", value = "Utilisateur Controller")
 public class UserController {
 
-    private static final Logger log = LoggerFactory.getLogger(ProfileController.class);
+    private static final Logger log = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
 
