@@ -3,6 +3,10 @@ package com.bam.bamcoreport.controller;
 import com.bam.bamcoreport.dto.model.UserDto;
 import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/users")
+@Api(tags = "Utilisateur", value = "Utilisateur Controller")
 public class UserController {
 
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
@@ -24,6 +29,8 @@ public class UserController {
     }
 
     @GetMapping
+    @ApiResponses({ @ApiResponse(code = 500, message = "Une erreur système s'est produite") })
+    @ApiOperation(value = "", nickname = "Retourne la liste des utilisateurs", notes = "", tags = {})
     public List<UserDto> getUsers() {
         log.info("Showing users list");
         return userService.getUsers();
