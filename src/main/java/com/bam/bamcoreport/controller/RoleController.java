@@ -1,5 +1,6 @@
 package com.bam.bamcoreport.controller;
 
+import com.bam.bamcoreport.dto.model.RoleDto;
 import com.bam.bamcoreport.entity.Role;
 import com.bam.bamcoreport.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class RoleController {
 
 
     @GetMapping
-    public List<Role> getAllRoles() {
+    public List<RoleDto> getAllRoles() {
         return roleService.findAll();
     }
 

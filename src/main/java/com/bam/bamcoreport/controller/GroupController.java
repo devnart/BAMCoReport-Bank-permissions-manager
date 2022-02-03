@@ -1,5 +1,6 @@
 package com.bam.bamcoreport.controller;
 
+import com.bam.bamcoreport.dto.model.GroupsDto;
 import com.bam.bamcoreport.entity.Groups;
 import com.bam.bamcoreport.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class GroupController {
     }
 
     @GetMapping
-    public List<Groups> getGroup() {
+    public List<GroupsDto> getGroup() {
         return groupService.getGroup();
     }
 

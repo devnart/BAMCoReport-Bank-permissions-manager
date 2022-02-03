@@ -1,6 +1,7 @@
 package com.bam.bamcoreport.controller;
 
 
+import com.bam.bamcoreport.dto.model.ProfileMemberDto;
 import com.bam.bamcoreport.entity.ProfileMember;
 import com.bam.bamcoreport.service.ProfileMemberService;
 import org.slf4j.Logger;
@@ -25,7 +26,7 @@ public class ProfileMemberController {
     }
 
     @GetMapping
-    public List<ProfileMember> getAll(){
+    public List<ProfileMemberDto> getAll(){
         log.info("Showing Profile member's list");
         return profileMemberService.getAll();
     }
