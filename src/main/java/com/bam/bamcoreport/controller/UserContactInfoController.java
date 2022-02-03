@@ -1,5 +1,6 @@
 package com.bam.bamcoreport.controller;
 
+import com.bam.bamcoreport.dto.model.UserContactInfoDto;
 import com.bam.bamcoreport.entity.UserContactInfo;
 import com.bam.bamcoreport.service.UserContactInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class UserContactInfoController {
     }
 
     @GetMapping
-    public List<UserContactInfo> getUserContactInfo() {
+    public List<UserContactInfoDto> getUserContactInfo() {
         return userContactInfoService.getAllUserContactInfo();
     }
 

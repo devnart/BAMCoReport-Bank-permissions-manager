@@ -1,5 +1,7 @@
 package com.bam.bamcoreport.service;
 
+import com.bam.bamcoreport.dto.model.GroupsDto;
+import com.bam.bamcoreport.dto.services.IMapDto;
 import com.bam.bamcoreport.entity.Groups;
 import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.repository.GroupRepository;
@@ -17,11 +19,14 @@ public class GroupService {
     private final GroupRepository groupRepository;
 
     @Autowired
+    IMapDto<Groups,GroupsDto> groupsMapping;
+
+    @Autowired
     public GroupService(GroupRepository groupRepository) {
         this.groupRepository = groupRepository;
     }
 
-    public List<Groups> getGroup() {
+    public List<GroupsDto> getGroup() {
 //        Groups group1 = new Groups(
 //                "Group 1",
 //                "1xsq98",
@@ -32,7 +37,8 @@ public class GroupService {
 //                LocalDateTime.of(LocalDate.now(), LocalTime.now()));
 //
 //        return List.of(group1);
-        return groupRepository.findAll();
+        List<Groups> groups=groupRepository.findAll();
+        return groupsMapping.convertListToListDto(groups,GroupsDto.class);
     }
 
     public void newGroup(Groups group) {

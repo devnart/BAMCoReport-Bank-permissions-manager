@@ -9,7 +9,7 @@ public class ProfileMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private String id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id")
@@ -28,7 +28,7 @@ public class ProfileMember {
     public ProfileMember() {
     }
 
-    public ProfileMember(String id, Profile profileId, Users userId, Groups groupId, Role roleId) {
+    public ProfileMember(Long id, Profile profileId, Users userId, Groups groupId, Role roleId) {
         this.id = id;
         this.profileId = profileId;
         this.userId = userId;
@@ -43,11 +43,11 @@ public class ProfileMember {
         this.roleId = roleId;
     }
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

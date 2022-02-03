@@ -1,5 +1,7 @@
 package com.bam.bamcoreport.service;
 
+import com.bam.bamcoreport.dto.model.ProfileDto;
+import com.bam.bamcoreport.dto.services.IMapDto;
 import com.bam.bamcoreport.entity.Profile;
 import com.bam.bamcoreport.repository.ProfileRepository;
 import org.slf4j.Logger;
@@ -18,13 +20,16 @@ public class ProfileService {
     @Autowired
     ProfileRepository profileRepository;
 
+    @Autowired
+    IMapDto<Profile, ProfileDto> profileMapping;
+
     public ProfileService(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
     }
 
-    public List<Profile> getProfiles(){
+    public List<ProfileDto> getProfiles(){
         List<Profile> profiles=profileRepository.findAll();
-        return profiles;
+        return profileMapping.convertListToListDto(profiles,ProfileDto.class);
     }
 
     public Profile addNewProfile(Profile profile){
