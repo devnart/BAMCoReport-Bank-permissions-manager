@@ -11,7 +11,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @EnableSwagger2
-
 public class BamcoreportApplication {
 
 	public static void main(String[] args) {
@@ -24,7 +23,7 @@ public class BamcoreportApplication {
 	}
 
 	@Bean
-	PasswordEncoder passwordEncoder() {
+	BCryptPasswordEncoder bCryptPasswordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 

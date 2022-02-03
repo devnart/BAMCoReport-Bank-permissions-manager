@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table
@@ -26,6 +27,16 @@ public class Users implements Serializable {
     private String lastName;
 
     private String title;
+
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_membership")
+    private List<Role> roles;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_membership")
+    private List<Groups> groups;
+
 
     private String jobTitle;
 
@@ -88,6 +99,22 @@ public class Users implements Serializable {
     public String getUsername() {
         return username;
     }
+//
+//    public List<Role> getRoles() {
+//        return roles;
+//    }
+//
+//    public void setRoles(List<Role> roles) {
+//        this.roles = roles;
+//    }
+//
+//    public List<Groups> getGroups() {
+//        return groups;
+//    }
+//
+//    public void setGroups(List<Groups> groups) {
+//        this.groups = groups;
+//    }
 
     public void setUsername(String username) {
         this.username = username;

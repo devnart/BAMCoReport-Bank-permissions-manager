@@ -23,7 +23,7 @@ public class Groups {
 
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.ALL})
+    @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.MERGE})
     @JoinColumn(name = "createdBy")
     private Users createdBy;
 
