@@ -1,5 +1,6 @@
 package com.bam.bamcoreport.controller;
 
+import com.bam.bamcoreport.dto.model.UserMembershipDto;
 import com.bam.bamcoreport.entity.UserMembership;
 import com.bam.bamcoreport.service.UserMembershipService;
 import com.bam.bamcoreport.service.UserService;
@@ -26,7 +27,7 @@ public class UserMembershipController {
     }
 
     @GetMapping
-    public List<UserMembership> getAll(){
+    public List<UserMembershipDto> getAll(){
         return userMembershipService.getAll();
     }
 
