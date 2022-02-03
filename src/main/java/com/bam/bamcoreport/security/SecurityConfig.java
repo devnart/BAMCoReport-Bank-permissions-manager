@@ -1,4 +1,3 @@
-/*
 package com.bam.bamcoreport.security;
 
 
@@ -19,10 +18,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
+
     }
 
     @Override
@@ -30,4 +29,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         super.configure(http);
     }
 }
-*/

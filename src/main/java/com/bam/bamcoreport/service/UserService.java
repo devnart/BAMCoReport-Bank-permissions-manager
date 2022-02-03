@@ -8,16 +8,20 @@ import com.bam.bamcoreport.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-/*import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;*/
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
@@ -27,23 +31,27 @@ public class UserService {
     @Autowired
     IMapDto<Users, UserDto> userMapping;
 
+    UserMembership userMembership;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<Users> user = userRepository.findByUsername(username);
+        if (user.isEmpty()) {
+            log.error("User not found");
+            throw new UsernameNotFoundException("user not found");
+        }else {
+            log.info("user found");
+        }
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+
+        // authorities.add(new SimpleGrantedAuthority(user.get().))
+         // return new User(user.get().getUsername(),user.get().getPassword(),);
+        return null;
+    }
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
-  /*  @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Users> user=userRepository.findByUsername(username);
-        if (user == null){
-            log.error("User not found");
-            throw new UsernameNotFoundException("User not found");
-        }
-        else{
-            log.info("user found {}",username);
-        }
-        return new org.springframework.security.core.userdetails.User(user.get().getUsername(),user.get().getPassword(),authorities);
-    }*/
 
     public List<UserDto> getUsers() {
         List<Users> users= userRepository.findAll();
@@ -72,6 +80,4 @@ public class UserService {
         userRepository.deleteById(userId);
 
     }
-
-
 }
