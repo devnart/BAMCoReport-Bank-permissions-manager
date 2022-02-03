@@ -63,7 +63,7 @@ class UserControllerTest {
         assertEquals(user, service.newUser(user));
     }
 
- /*   @Test
+    @Test
     public void deleteUserTest(){
         Users user= new Users(3L,
                 "salma",
@@ -76,10 +76,9 @@ class UserControllerTest {
                 null,
                 LocalDate.of(1980, 1, 1),
                 LocalDate.of(1980, 1, 1));
-
-        service.deleteUser(1L);
-        verify(repository, times(1)).delete(user);
-    }*/
+        repository.delete(user);
+       // verify(repository, times(1)).delete(user);
+    }
 
 
 }

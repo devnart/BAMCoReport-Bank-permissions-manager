@@ -3,7 +3,6 @@ package com.bam.bamcoreport.service;
 import com.bam.bamcoreport.dto.model.UserDto;
 import com.bam.bamcoreport.dto.services.IMapDto;
 import com.bam.bamcoreport.dto.services.MapDto;
-import com.bam.bamcoreport.entity.UserMembership;
 import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.repository.UserRepository;
 import org.slf4j.Logger;
@@ -81,5 +80,4 @@ public class UserService implements UserDetailsService {
         userRepository.deleteById(userId);
 
     }
-
 }

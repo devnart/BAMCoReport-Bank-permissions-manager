@@ -19,7 +19,7 @@ public class UserContactInfoService {
     }
 
     public List<UserContactInfo> getAllUserContactInfo() {
-        return userContactInfoRepository.findAll();    }
+        return userContactInfoRepository.findAll();   }
 
     public void newUserContactInfo(UserContactInfo userContactInfo) {
         userContactInfoRepository.save(userContactInfo);
