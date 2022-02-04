@@ -2,8 +2,6 @@ package com.bam.bamcoreport.service;
 
 import com.bam.bamcoreport.dto.model.UserDto;
 import com.bam.bamcoreport.dto.services.IMapDto;
-import com.bam.bamcoreport.dto.services.MapDto;
-import com.bam.bamcoreport.entity.UserMembership;
 import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.repository.UserRepository;
 import org.slf4j.Logger;
@@ -32,8 +30,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     IMapDto<Users, UserDto> userMapping;
 
-    UserMembershipService userMembershipService;
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Users> user = userRepository.findByUsername(username);
@@ -44,10 +40,11 @@ public class UserService implements UserDetailsService {
             log.info("user found");
         }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        String role = userMembershipService.getById(user.get().getId()).getRoleId().getDisplayName();
+//        String role = userMembershipService.getById(user.get().getId()).getRoleId().getDisplayName();
 
-        authorities.add(new SimpleGrantedAuthority(role));
-        return new User(user.get().getUsername(),user.get().getPassword(),authorities);
+//        authorities.add(new SimpleGrantedAuthority(role));
+//        return new User(user.get().getUsername(),user.get().getPassword(),authorities);
+        return null;
     }
 
     public UserService(UserRepository userRepository) {

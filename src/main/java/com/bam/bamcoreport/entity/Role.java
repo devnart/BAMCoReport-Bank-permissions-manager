@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
 @Table
@@ -25,6 +26,9 @@ public class Role {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Users createdBy;
+
+    @OneToMany(mappedBy = "role")
+    Set<UserMembership> role;
 
     @CreationTimestamp
     private LocalDate creationDate;

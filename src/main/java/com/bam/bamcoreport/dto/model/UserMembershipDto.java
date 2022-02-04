@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
 public class UserMembershipDto {
 
     private long id;
-    private Users userId;
-    private Role roleId;
-    private Groups groupId;
+    private Users user;
+    private Role role;
+    private Groups group;
     private Users assignedBy;
     private LocalDateTime assignedDate;
 

@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -28,17 +29,10 @@ public class Users implements Serializable {
 
     private String title;
 
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_membership")
-    private List<Role> roles;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_membership")
-    private List<Groups> groups;
-
-
     private String jobTitle;
+
+    @OneToMany(mappedBy = "user")
+    Set<UserMembership> user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "managerUserId")

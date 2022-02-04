@@ -1,11 +1,8 @@
 package com.bam.bamcoreport.service;
 
-
-import com.bam.bamcoreport.dto.model.UserDto;
 import com.bam.bamcoreport.dto.model.UserMembershipDto;
 import com.bam.bamcoreport.dto.services.IMapDto;
 import com.bam.bamcoreport.entity.UserMembership;
-import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.repository.UserMembershipRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

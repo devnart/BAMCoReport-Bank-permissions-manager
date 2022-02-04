@@ -20,20 +20,18 @@ public class UserMembership {
     private long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Users userId;
+    private Users user;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Role roleId;
+    private Role role;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Groups groupId;
+    private Groups group;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "assignedby")
     private Users assignedBy;
 
     @CreationTimestamp
-    @Column(name = "assigneddate")
     private LocalDateTime assignedDate;
 
 }

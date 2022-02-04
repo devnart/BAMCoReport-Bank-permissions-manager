@@ -5,6 +5,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table
@@ -22,6 +23,9 @@ public class Groups {
     private String displayName;
 
     private String description;
+
+    @OneToMany(mappedBy = "group")
+    Set<UserMembership> group;
 
     @ManyToOne(fetch = FetchType.LAZY,cascade = {CascadeType.MERGE})
     @JoinColumn(name = "createdBy")
