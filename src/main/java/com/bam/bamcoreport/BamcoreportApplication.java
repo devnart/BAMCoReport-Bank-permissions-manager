@@ -22,9 +22,5 @@ public class BamcoreportApplication {
 		return new ModelMapper();
 	}
 
-	@Bean
-	BCryptPasswordEncoder bCryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
 
 }

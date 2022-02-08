@@ -10,7 +10,6 @@ public class UserDto {
     private UserContactInfo userContactInfo;
     private boolean enabled;
     private String username;
-    @JsonIgnore
     private String password;
     private String firstname;
     private String lastname;

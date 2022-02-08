@@ -28,6 +28,11 @@ public class RoleService {
         return roleMapping.convertListToListDto(roles,RoleDto.class);
     }
 
+    public RoleDto findById(Long id){
+        Role role = roleRepository.findById(id).get();
+        return roleMapping.convertToDto(role,RoleDto.class);
+    }
+
     public void save(Role role){
         roleRepository.save(role);
     }

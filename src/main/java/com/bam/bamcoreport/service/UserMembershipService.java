@@ -36,6 +36,11 @@ public class UserMembershipService {
         return userMapping.convertToDto(userMembership, UserMembershipDto.class);
     }
 
+    public UserMembershipDto getByUserId(Long id){
+        UserMembership userMembership = userMembershipRepository.findByUserId(id);
+        return userMapping.convertToDto(userMembership, UserMembershipDto.class);
+    }
+
     public void add(UserMembership userMembership){
         userMembershipRepository.save(userMembership);
     }

@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserMembershipRepository extends JpaRepository<UserMembership,Long> {
-
+    UserMembership findByUserId(Long userId);
 }

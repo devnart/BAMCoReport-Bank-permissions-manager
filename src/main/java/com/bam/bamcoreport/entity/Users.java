@@ -20,7 +20,6 @@ public class Users implements Serializable {
 
     private String username;
 
-    @JsonIgnore
     private String password;
 
     private String firstName;
