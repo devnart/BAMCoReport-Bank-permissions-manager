@@ -1,5 +1,7 @@
 package com.bam.bamcoreport.controller;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
@@ -41,8 +44,11 @@ public class JwtAuthenticationController {
 
         final String token = jwtTokenUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION,
-                jwtTokenUtil.generateToken(userDetails)).body(new JwtResponse(token));
+        return ResponseEntity.ok()
+                .header(
+                        HttpHeaders.AUTHORIZATION,
+                        jwtTokenUtil.generateToken(userDetails))
+                .body(new JwtResponse(token));
     }
 
     private void authenticate(String username, String password) throws Exception {
