@@ -89,4 +89,12 @@ public class UserService {
         userRepository.deleteById(userId);
 
     }
+
+    public void updatePassword(String username, String password) {
+        Optional<Users> user = userRepository.findByUsername(username);
+        if (user.isPresent()) {
+            user.get().setPassword(password);
+            userRepository.save(user.get());
+        }
+    }
 }
