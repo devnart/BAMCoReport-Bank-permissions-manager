@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +35,7 @@ public class UserController {
     }
 
     @GetMapping
-    @ApiResponses({ @ApiResponse(code = 500, message = "Une erreur système s'est produite") })
+    @ApiResponses({@ApiResponse(code = 500, message = "Une erreur système s'est produite")})
     @ApiOperation(value = "", nickname = "Retourne la liste des utilisateurs", notes = "", tags = {})
     public List<UserDto> getUsers() {
         log.info("Showing users list");
@@ -47,8 +49,20 @@ public class UserController {
         userService.newUser(user);
     }
 
+    @PostMapping("/password")
+    public void updatePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword) {
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (passwordEncoder.matches(oldPassword, user.getPassword())) {
+            log.info("password match");
+            userService.updatePassword(user.getUsername(), passwordEncoder.encode(newPassword));
+        } else {
+            log.info("password not match");
+            throw new RuntimeException("Password not match");
+        }
+    }
+
     @DeleteMapping(path = "{userId}")
-    public void deleteUser(@PathVariable("userId") Long userId){
+    public void deleteUser(@PathVariable("userId") Long userId) {
         log.warn("user deleted");
         userService.deleteUser(userId);
     }
