@@ -30,10 +30,10 @@ public class Reject {
     private Long  Rib;
     private String gravity;//low or height
     private Long zoneCode;
-    private Boolean isWrongField;
+    private boolean isWrongField;
     private String errorCode;
     private String errorLabel;
-    private Boolean isRequestTaken;//false if is ot yet affected
+    private boolean isRequestTaken;//false if is ot yet affected
     private String actionDetail;
     private File file;
     @OneToOne(targetEntity = Reject.class,cascade = CascadeType.MERGE)
