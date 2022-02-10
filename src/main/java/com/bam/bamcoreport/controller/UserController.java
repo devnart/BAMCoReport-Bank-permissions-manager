@@ -38,7 +38,7 @@ public class UserController {
     @ApiResponses({@ApiResponse(code = 500, message = "Une erreur système s'est produite")})
     @ApiOperation(value = "", nickname = "Retourne la liste des utilisateurs", notes = "", tags = {})
     public List<UserDto> getUsers() {
-        log.info("Showing users list");
+                                                                        log.info("Showing users list");
         return userService.getUsers();
     }
 
@@ -66,5 +66,7 @@ public class UserController {
         log.warn("user deleted");
         userService.deleteUser(userId);
     }
+
+
 
 }

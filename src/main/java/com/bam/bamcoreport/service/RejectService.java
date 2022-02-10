@@ -9,7 +9,11 @@ import com.bam.bamcoreport.entity.Users;
 import com.bam.bamcoreport.repository.RejectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.nio.channels.FileLockInterruptionException;
 import java.util.List;
 
@@ -26,7 +30,7 @@ public class RejectService {
         this.rejectRepository = rejectRepository;
     }
 
-    List<RejectDto> getAll(){
+    public List<RejectDto> getAll(){
         List<Reject> rejects=rejectRepository.findAll();
         return rejectMapping.convertListToListDto(rejects,RejectDto.class);
     }
@@ -47,6 +51,22 @@ public class RejectService {
             throw new IllegalStateException("Id not found");
         }
         rejectRepository.deleteById(id);
+    }
+    public void uploadFile(MultipartFile file) throws IOException {
+        File convertFile= new
+                File("C:\\Users\\admin\\Desktop\\BAMCoReport-Bank-permissions-manager\\src\\uploads" +file.getOriginalFilename())
+        ;
+        convertFile.createNewFile();
+
+        try (FileOutputStream fout = new FileOutputStream(convertFile))
+        {
+            fout.write(file.getBytes());
+        }
+        catch (Exception exe)
+        {
+            exe.printStackTrace();
+        }
+        System.out.println("File has uploaded successfully");
     }
 
     public void updateReject(Long id, Users userId){
