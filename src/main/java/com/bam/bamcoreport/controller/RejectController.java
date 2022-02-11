@@ -33,9 +33,9 @@ public class RejectController {
 
 
     @PostMapping
-    public void addNewReject(@RequestBody Reject reject){
+    public void addNewReject(@RequestParam Reject reject, @RequestParam("file") MultipartFile file) throws IOException {
         log.info("Reject added");
-        rejectService.addReject(reject);
+        rejectService.addReject(reject,file);
     }
 
 

@@ -35,9 +35,27 @@ public class RejectService {
         return rejectMapping.convertListToListDto(rejects,RejectDto.class);
     }
 
-    public void addReject(Reject reject){
+    public void addReject(Reject reject,MultipartFile file) throws IOException {
+        File convertFile= new
+                File("C:\\Users\\admin\\Desktop\\BAMCoReport-Bank-permissions-manager\\src\\uploads" +file.getOriginalFilename())
+                ;
+        convertFile.createNewFile();
+
+        try (FileOutputStream fout = new FileOutputStream(convertFile))
+        {
+            fout.write(file.getBytes());
+            reject.setFile(convertFile);
+        }
+        catch (Exception exe)
+        {
+            exe.printStackTrace();
+        }
+        System.out.println("File has uploaded successfully"+ convertFile);
+
         rejectRepository.save(reject);
     }
+
+
     public RejectDto getById(Long id){
         Reject reject=rejectRepository.findById(id).get();
         return rejectMapping.convertToDto(reject,RejectDto.class);
@@ -66,7 +84,7 @@ public class RejectService {
         {
             exe.printStackTrace();
         }
-        System.out.println("File has uploaded successfully");
+        System.out.println("File has uploaded successfully"+ convertFile);
     }
 
     public void updateReject(Long id, Users userId){
