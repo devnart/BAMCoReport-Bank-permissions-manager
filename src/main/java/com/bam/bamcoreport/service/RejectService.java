@@ -30,49 +30,48 @@ public class RejectService {
         this.rejectRepository = rejectRepository;
     }
 
-    public List<RejectDto> getAll(){
-        List<Reject> rejects=rejectRepository.findAll();
-        return rejectMapping.convertListToListDto(rejects,RejectDto.class);
+    public List<RejectDto> getAll() {
+        List<Reject> rejects = rejectRepository.findAll();
+        return rejectMapping.convertListToListDto(rejects, RejectDto.class);
     }
 
-    public void addReject(Reject reject){
+    public void addReject(Reject reject) {
         rejectRepository.save(reject);
     }
-    public RejectDto getById(Long id){
-        Reject reject=rejectRepository.findById(id).get();
-        return rejectMapping.convertToDto(reject,RejectDto.class);
+
+    public RejectDto getById(Long id) {
+        Reject reject = rejectRepository.findById(id).get();
+        return rejectMapping.convertToDto(reject, RejectDto.class);
     }
 
-    public void deleteReject(Long id){
+    public void deleteReject(Long id) {
 
-        boolean exists=rejectRepository.existsById(id);
+        boolean exists = rejectRepository.existsById(id);
 
-        if (!exists){
+        if (!exists) {
             throw new IllegalStateException("Id not found");
         }
         rejectRepository.deleteById(id);
     }
+
     public void uploadFile(MultipartFile file) throws IOException {
-        File convertFile= new
-                File("C:\\Users\\admin\\Desktop\\BAMCoReport-Bank-permissions-manager\\src\\uploads" +file.getOriginalFilename())
-        ;
+        File convertFile = new
+                File("C:\\Users\\admin\\Desktop\\BAMCoReport-Bank-permissions-manager\\src\\uploads" + file.getOriginalFilename());
         convertFile.createNewFile();
 
-        try (FileOutputStream fout = new FileOutputStream(convertFile))
-        {
+        try (FileOutputStream fout = new FileOutputStream(convertFile)) {
             fout.write(file.getBytes());
-        }
-        catch (Exception exe)
-        {
+        } catch (Exception exe) {
             exe.printStackTrace();
         }
+
         System.out.println("File has uploaded successfully");
     }
 
-    public void updateReject(Long id, Users userId){
+    public void updateReject(Long id, Users userId) {
 
-        Reject reject=rejectRepository.findById(id).orElseThrow(()->
-                new IllegalStateException("Reject with"+ id +"does not exist"));
+        Reject reject = rejectRepository.findById(id).orElseThrow(() ->
+                new IllegalStateException("Reject with" + id + "does not exist"));
 
         reject.setTakenBy(userId);
     }
