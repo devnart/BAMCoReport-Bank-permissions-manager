@@ -36,7 +36,7 @@ public class Reject {
     private String errorLabel;
     private boolean isRequestTaken;//false if is ot yet affected
     private String actionDetail;
-    private File file;
+    private String file;
     @OneToOne(targetEntity = Reject.class,cascade = CascadeType.MERGE)
     @JoinColumn(name = "userId", referencedColumnName = "id")
     @OnDelete(action = OnDeleteAction.CASCADE)
@@ -45,7 +45,7 @@ public class Reject {
     public Reject() {
     }
 
-    public Reject(Long id, String flowType, String rejectNature, String entity, LocalDate declarationDate, String agencyCode, Long userRegistrationNumber, String bu, String su, String regionalDelegation, String subDelegationType, String subDelegationName, Long cliFileCode, Long clientCode, Long rib, String gravity, Long zoneCode, Boolean isWrongField, String errorCode, String errorLabel, Boolean isRequestTaken, String actionDetail, File file, Users takenBy) {
+    public Reject(Long id, String flowType, String rejectNature, String entity, LocalDate declarationDate, String agencyCode, Long userRegistrationNumber, String bu, String su, String regionalDelegation, String subDelegationType, String subDelegationName, Long cliFileCode, Long clientCode, Long rib, String gravity, Long zoneCode, Boolean isWrongField, String errorCode, String errorLabel, Boolean isRequestTaken, String actionDetail, String file, Users takenBy) {
         this.id = id;
         this.flowType = flowType;
         this.rejectNature = rejectNature;
@@ -72,7 +72,7 @@ public class Reject {
         TakenBy = takenBy;
     }
 
-    public Reject(String flowType, String rejectNature, String entity, LocalDate declarationDate, String agencyCode, Long userRegistrationNumber, String bu, String su, String regionalDelegation, String subDelegationType, String subDelegationName, Long cliFileCode, Long clientCode, Long rib, String gravity, Long zoneCode, Boolean isWrongField, String errorCode, String errorLabel, Boolean isRequestTaken, String actionDetail, File file, Users takenBy) {
+    public Reject(String flowType, String rejectNature, String entity, LocalDate declarationDate, String agencyCode, Long userRegistrationNumber, String bu, String su, String regionalDelegation, String subDelegationType, String subDelegationName, Long cliFileCode, Long clientCode, Long rib, String gravity, Long zoneCode, Boolean isWrongField, String errorCode, String errorLabel, Boolean isRequestTaken, String actionDetail, String file, Users takenBy) {
         this.flowType = flowType;
         this.rejectNature = rejectNature;
         this.entity = entity;
@@ -274,11 +274,11 @@ public class Reject {
         this.actionDetail = actionDetail;
     }
 
-    public File getFile() {
+    public String getFile() {
         return file;
     }
 
-    public void setFile(File file) {
+    public void setFile(String file) {
         this.file = file;
     }
 
