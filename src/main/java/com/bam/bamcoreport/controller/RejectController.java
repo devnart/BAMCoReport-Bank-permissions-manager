@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(path = "/api/v1/reject")
@@ -31,23 +32,11 @@ public class RejectController {
         return rejectService.getAll();
     }
 
-
     @PostMapping
-    public void addNewReject(@RequestParam Reject reject, @RequestParam("file") MultipartFile file) throws IOException {
-        System.out.println(reject);
+    public void addNewReject(@RequestParam Map<String,String> reject, @RequestParam("file") MultipartFile file) throws IOException {
         log.info("Reject added");
         rejectService.addReject(reject,file);
     }
-
-
-
-    @PostMapping(path = "/upload",value = "/upload")
-    public void uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
-        log.info("File uploaded");
-        rejectService.uploadFile(file);
-    }
-
-
 
     @DeleteMapping(path = "{id}")
     public void deleteReject(@PathVariable("id") Long id){
