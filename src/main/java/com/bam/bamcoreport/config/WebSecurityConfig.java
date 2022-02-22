@@ -66,6 +66,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/users").permitAll()
                 .antMatchers("/api/v1/reject").permitAll()
                 .antMatchers("/api/v1/userMembership").permitAll()
+                .antMatchers("/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**").permitAll()
                 .antMatchers("/api/v1/profile").hasRole("ADMIN")
 
                 // all other requests need to be authenticated
