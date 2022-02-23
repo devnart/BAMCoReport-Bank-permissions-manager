@@ -5,6 +5,7 @@ import com.bam.bamcoreport.repository.UserRepository;
 import com.bam.bamcoreport.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -24,9 +25,11 @@ import static org.mockito.Mockito.times;
 class UserControllerTest {
 
     @Autowired
+    @Mock
     private UserService service;
 
     @MockBean
+    @Mock
     private UserRepository repository;
 
     @Test
