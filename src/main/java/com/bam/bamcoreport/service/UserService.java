@@ -63,7 +63,7 @@ public class UserService {
     }
 
     public List<UserDto> getUsers() {
-        List<Users> users= userRepository.findAll();
+        List<Users> users = userRepository.findAll();
         return userMapping.convertListToListDto(users,UserDto.class);
     }
 
