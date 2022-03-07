@@ -107,6 +107,7 @@
 				<version>${parent.version}</version>
 			</plugin>
 		</plugins>
+		<finalName>bamco</finalName>
 	</build>
 
 </project>
