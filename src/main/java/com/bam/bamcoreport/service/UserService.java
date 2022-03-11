@@ -54,7 +54,7 @@ public class UserService {
 //        UserMembership membership = userMembershipRepository.findByUserId(user.get().getId());
 //        String role = roleService.findById(membership.getRole().getId()).getName();
 //
-//        authorities.add(new SimpleGrantedAuthority(role));
+// //       authorities.add(new SimpleGrantedAuthority(role));
 //        return new User(user.get().getUsername(),user.get().getPassword(),authorities);
 //    }
 
