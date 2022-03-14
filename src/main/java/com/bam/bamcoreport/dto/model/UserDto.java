@@ -7,11 +7,21 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.LocalDateTime;
 
 public class UserDto {
+    private long id;
     private UserContactInfo userContactInfo;
     private boolean enabled;
     private String username;
     private String password;
     private String firstname;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     private String lastname;
     private String title;
     private String jobTitle;

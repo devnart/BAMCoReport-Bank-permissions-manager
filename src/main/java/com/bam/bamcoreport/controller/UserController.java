@@ -43,10 +43,10 @@ public class UserController {
     }
 
     @PostMapping
-    public void addUser(@RequestBody Users user) {
+    public Users addUser(@RequestBody Users user) {
         log.info("User added");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userService.newUser(user);
+        return userService.newUser(user);
     }
 
     @PostMapping("/password")

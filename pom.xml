@@ -15,6 +15,7 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<maven.test.skip>true</maven.test.skip>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -106,6 +107,7 @@
 				<version>${parent.version}</version>
 			</plugin>
 		</plugins>
+		<finalName>bamco</finalName>
 	</build>
 
 </project>
